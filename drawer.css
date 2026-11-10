@@ -1,0 +1,162 @@
+/* 右侧抽屉统一规范：外壳、间距、字号、按钮一处定义，政策列表、组稿、版本、资料、办理共用。 */
+:root{--drawer-ink:#1d2733;--drawer-text:#33465f;--drawer-muted:#6d7887;--drawer-line:#edf0f4;--drawer-soft:#f5f7fa;--drawer-pad:24px}
+
+/* 外壳 */
+.match-drawer-panel,.in-project .workspace-document{position:fixed;top:0;right:0;bottom:0;z-index:60;display:flex;flex-direction:column;width:min(640px,100%);height:100%;margin:0;border:0;border-radius:16px 0 0 16px;overflow:hidden;background:#fff;box-shadow:-12px 0 40px rgba(25,37,44,.14)}
+.match-drawer-panel{width:min(720px,100%);animation:drawer-in .24s cubic-bezier(.2,.7,.2,1)}
+.in-project .workspace-document{animation:drawer-in .24s cubic-bezier(.2,.7,.2,1)}
+.in-project .workspace-document:has(#assembly-form,.mat-version-document){width:min(720px,100%)}
+.in-project .workspace-document:has(.mat-compare-columns){width:min(880px,100%)}
+.match-drawer-scrim,.in-project .workspace-document-scrim{position:fixed;inset:0;z-index:59;width:100%;height:100%;padding:0;border:0;border-radius:0;background:rgba(25,37,44,.28);cursor:pointer}
+@keyframes drawer-in{from{transform:translateX(32px);opacity:.5}to{transform:none;opacity:1}}
+
+/* 头部 */
+.match-drawer-panel>header,.in-project .workspace-document-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none;min-height:60px;padding:0 16px 0 var(--drawer-pad);border-bottom:1px solid var(--drawer-line);background:#fff}
+.match-drawer-panel h2,.in-project .workspace-document-toolbar>h2{margin:0;min-width:0;font-size:15px;line-height:1.4;font-weight:600;color:var(--drawer-ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.match-drawer-close,.in-project .workspace-document-toolbar>.workspace-document-close{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;min-height:32px;padding:0;border:0;border-radius:50%;background:transparent;color:var(--drawer-muted);cursor:pointer;transition:background .15s,color .15s}
+.match-drawer-close:hover,.in-project .workspace-document-toolbar>.workspace-document-close:hover{background:#eef1f5;color:var(--drawer-ink)}
+.match-drawer-close .icon,.in-project .workspace-document-toolbar>.workspace-document-close>.icon{width:16px;height:16px;transform:none}
+
+/* 内容区 */
+.match-drawer-body,.in-project .workspace-document>.workspace-content{flex:1 1 auto;min-height:0;padding:20px var(--drawer-pad) 28px;overflow-y:auto;overscroll-behavior:contain;font-size:13px;line-height:1.7;color:var(--drawer-text)}
+.match-drawer-note{margin:0 0 4px;font-size:12px;line-height:1.6;color:var(--drawer-muted)}
+
+/* 摘要卡：每个抽屉最上面的关键信息 */
+.drawer-summary{padding:14px 16px;border-radius:12px;background:var(--drawer-soft)}
+.drawer-summary>p{margin:0;font-size:14px;line-height:1.5;font-weight:600;color:var(--drawer-ink)}
+.drawer-summary dl{display:flex;flex-wrap:wrap;gap:8px 28px;margin:10px 0 0}
+.drawer-summary dt{font-size:11px;line-height:1.5;color:var(--drawer-muted)}
+.drawer-summary dd{margin:0;font-size:13px;line-height:1.5;font-weight:600;color:var(--drawer-ink)}
+
+/* 页面标题已在抽屉头部，内容里不再重复 */
+.in-project .workspace-document .workspace-document-heading{display:flex;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 12px;margin:0 0 14px}
+.in-project .workspace-document .workspace-document-heading>div:first-child>h2{display:none}
+.in-project .workspace-document .workspace-document-heading p{margin:0;font-size:12px;line-height:1.6;color:var(--drawer-muted)}
+.in-project .workspace-document .mat-header-actions,.in-project .workspace-document .page-actions{display:flex;flex-wrap:wrap;gap:8px;padding:0}
+
+/* 统一的按钮和小标题 */
+.in-project .workspace-document .mat-button,.in-project .workspace-document .button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:32px;padding:0 12px;border-radius:8px;box-shadow:none;font-size:12px;font-weight:500;text-decoration:none;white-space:nowrap}
+.in-project .workspace-document h2{font-size:14px;line-height:1.5;font-weight:600;letter-spacing:0;color:var(--drawer-ink)}
+.in-project .workspace-document h3{font-size:13px;line-height:1.5;font-weight:600;color:var(--drawer-text)}
+.in-project .workspace-document .muted{font-size:12px;color:var(--drawer-muted)}
+
+/* 政策详情 */
+.in-project .workspace-document .policy-detail-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.in-project .workspace-document .content-panel{padding:0;border:0;background:none}
+.in-project .workspace-document .policy-side{order:-1;display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px 16px;border:0;border-radius:12px;background:var(--drawer-soft)}
+.in-project .workspace-document .policy-summary{margin:0;font-size:13px;line-height:1.7}
+.in-project .workspace-document .summary-list{margin:10px 0 0}
+.in-project .workspace-document .summary-list>div{padding:6px 0;font-size:13px}
+.in-project .workspace-document ul{padding-left:18px}
+
+/* 组稿 */
+.in-project .workspace-document .mat-page{max-width:none;padding:0;font-size:13px}
+.in-project .workspace-document .mat-generic-note{margin:0 0 12px;padding:8px 12px;border-radius:8px;font-size:12px;line-height:1.6}
+.in-project .workspace-document .mat-gap-notice{margin:0 0 14px;padding:10px 14px;border:0;border-radius:10px;font-size:12px;line-height:1.6}
+.in-project .workspace-document .mat-gap-notice strong{font-size:13px}
+.in-project .workspace-document .mat-gap-notice p,.in-project .workspace-document .mat-gap-notice span{margin:2px 0 0;font-size:12px}
+.in-project .workspace-document .mat-editor-layout{display:block}
+.in-project .workspace-document .mat-chapter-nav{position:sticky;top:-20px;z-index:2;display:flex;gap:4px;margin:0 calc(var(--drawer-pad) * -1) 12px;padding:8px var(--drawer-pad);overflow-x:auto;background:#fff;border-bottom:1px solid var(--drawer-line)}
+.in-project .workspace-document .mat-chapter-nav>p,.in-project .workspace-document .mat-chapter-nav small{display:none}
+.in-project .workspace-document .mat-chapter-nav button{flex:none;min-height:28px;padding:0 10px;border:0;border-radius:999px;background:var(--drawer-soft);font-size:12px;white-space:nowrap}
+.in-project .workspace-document .mat-chapter-nav button:hover{background:#e6eefc;color:#174faf}
+.in-project .workspace-document .mat-chapter-nav button span{display:none}
+.in-project .workspace-document .mat-editor-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px}
+.in-project .workspace-document .mat-editor-toolbar h2{margin:0}
+.in-project .workspace-document .mat-editor-toolbar p{margin:0;font-size:12px;color:var(--drawer-muted)}
+.in-project .workspace-document .mat-editor-section{margin:0 0 18px;padding:0;border:0}
+.in-project .workspace-document .mat-editor-section>label{display:flex;gap:8px;margin:0 0 6px;font-size:13px;font-weight:600;color:var(--drawer-ink)}
+.in-project .workspace-document .mat-editor-section>label>span{color:var(--drawer-muted);font-weight:400}
+.in-project .workspace-document .mat-editor{min-height:120px;padding:10px 12px;border:1px solid #dce3ed;border-radius:10px;background:#fff;font-size:13px;line-height:1.7}
+.in-project .workspace-document .mat-editor:focus{border-color:#88a9df;outline:0;box-shadow:0 0 0 2px #edf3fe}
+.in-project .workspace-document .mat-section-source-heading{margin:8px 0 2px;font-size:11px;color:var(--drawer-muted)}
+.in-project .workspace-document .mat-source-empty,.in-project .workspace-document .mat-source summary{font-size:12px}
+.in-project .workspace-document .mat-save-section,.in-project .workspace-document .mat-confirmation{position:sticky;bottom:-28px;z-index:2;display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:16px calc(var(--drawer-pad) * -1) -28px;padding:12px var(--drawer-pad);border:0;border-top:1px solid var(--drawer-line);border-radius:0;background:#fff}
+.in-project .workspace-document .mat-save-section label{flex:0 0 auto;margin:0;font-size:12px;font-weight:500}
+.in-project .workspace-document .mat-save-section label span{color:var(--drawer-muted);font-weight:400}
+.in-project .workspace-document .mat-save-section input{flex:1 1 200px;width:auto;min-width:0;height:32px;min-height:32px;padding:0 10px;border:1px solid #dce3ed;border-radius:8px;font-size:12px}
+.in-project .workspace-document .mat-save-section p{display:none}
+.in-project .workspace-document .mat-confirmation>div{flex:1 1 240px;min-width:0}
+.in-project .workspace-document .mat-confirmation h2{margin:0;font-size:13px}
+.in-project .workspace-document .mat-confirmation p,.in-project .workspace-document .mat-confirmation li{margin:0;font-size:12px;line-height:1.6}
+
+/* 版本和对比 */
+.in-project .workspace-document .mat-version-summary{display:flex;align-items:center;gap:10px;margin:0 0 14px;padding:10px 14px;border:0;border-radius:10px;background:var(--drawer-soft);font-size:12px}
+.in-project .workspace-document .mat-version-summary p{margin:0}
+.in-project .workspace-document .mat-readonly-section{margin:0 0 18px;padding:0 0 16px;border:0;border-bottom:1px solid var(--drawer-line)}
+.in-project .workspace-document .mat-readonly-section h2{display:flex;gap:8px;margin:0 0 6px}
+.in-project .workspace-document .mat-readonly-section h2 span{color:var(--drawer-muted);font-weight:400}
+.in-project .workspace-document .mat-readonly-section h3{margin:8px 0 2px;font-size:11px;font-weight:400;color:var(--drawer-muted)}
+.in-project .workspace-document .mat-body-text{font-size:13px;line-height:1.7}
+
+/* 资料录入 */
+.in-project .workspace-document .source-context{margin:0 0 10px;font-size:12px;line-height:1.6;color:var(--drawer-muted)}
+.in-project .workspace-document #source-form .form-field{margin:0 0 6px!important;font-size:13px;font-weight:600}
+.in-project .workspace-document .source-editor{width:100%;min-height:240px;padding:10px 12px;border:1px solid #dce3ed;border-radius:10px;font-size:13px;line-height:1.7}
+
+/* 政策列表 */
+.match-drawer .match-policy.is-full{margin-top:10px;padding:14px 16px;border-radius:12px;background:var(--drawer-soft);grid-template-columns:minmax(0,1fr) 132px}
+.match-drawer .match-policy.is-full.is-first{background:#eef4fe}
+.match-drawer .match-policy.is-full h3{font-size:14px}
+.match-drawer .match-policy-side>strong{font-size:24px}
+
+/* 办理步骤 */
+.guidance-detail{font-size:13px;line-height:1.6;color:var(--drawer-text)}
+.guidance-timeline{list-style:none;counter-reset:guidance;margin:18px 0 0;padding:0}
+.guidance-timeline>li{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:0 0 16px 34px;counter-increment:guidance}
+.guidance-timeline>li::before{content:counter(guidance);position:absolute;top:0;left:0;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#e6eefc;font-size:11px;font-weight:600;color:#174faf}
+.guidance-timeline>li:not(:last-child)::after{content:'';position:absolute;top:26px;bottom:4px;left:10.5px;width:1px;background:#e0e6ee}
+.guidance-timeline>li>div{display:grid;gap:1px;min-width:0}
+.guidance-timeline strong{font-size:13px;line-height:22px;font-weight:600;color:var(--drawer-ink)}
+.guidance-timeline .is-plain strong{font-weight:400;color:var(--drawer-text)}
+.guidance-timeline small{font-size:12px;line-height:1.5;color:var(--drawer-muted)}
+.guidance-timeline .icon{width:14px;height:14px}
+.guidance-note{margin:0;padding:10px 12px;border-radius:8px;background:#fff7ec;font-size:12px;line-height:1.6;color:#8a541c}
+
+@media (max-width:640px){
+  :root{--drawer-pad:16px}
+  .match-drawer-panel,.in-project .workspace-document{border-radius:0}
+  .match-drawer .match-policy.is-full{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  .match-drawer-panel,.in-project .workspace-document{animation:none}
+  .match-drawer-close,.in-project .workspace-document-toolbar>.workspace-document-close{transition:none}
+}
+
+/* 上传修改稿 */
+.in-project .workspace-document .mat-upload{position:relative;cursor:pointer}
+.in-project .workspace-document .mat-upload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.in-project .workspace-document .mat-upload:focus-within{outline:2px solid #88a9df;outline-offset:1px}
+
+/* 详情抽屉里的政策卡不再加外边距 */
+.match-drawer-body-inline .match-policy.is-full{margin-top:0;padding:14px 16px;border-radius:12px;background:var(--drawer-soft);grid-template-columns:minmax(0,1fr) 132px}
+.match-drawer-body-inline .match-policy.is-full h3{font-size:14px}
+@media (max-width:640px){.match-drawer-body-inline .match-policy.is-full{grid-template-columns:minmax(0,1fr)}}
+
+/* 查看材料时的重新评估 */
+.in-project .workspace-document .version-review{display:flex;align-items:center;gap:26px;margin:0 0 14px;padding:22px 22px}
+.version-review .score-orb{flex:none;width:84px;height:84px}
+.version-review .score-orb strong{font-size:21px}
+.version-review>div:last-child p{margin:0;font-size:14px;font-weight:600;color:var(--drawer-ink)}
+.version-review>div:last-child small{display:block;margin-top:2px;font-size:12px;line-height:1.6;color:var(--drawer-muted)}
+
+/* 版本抽屉：每份材料自己的下载、删除、重新上传 */
+.mat-section-head{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin:0 0 8px}
+.in-project .workspace-document .mat-section-head h2{margin:0}
+.mat-section-head .text-button,.mat-section-head .chat-gap-upload{font-size:12px;line-height:1.6;color:#174faf}
+.mat-section-actions{display:flex;align-items:center;gap:14px;margin-left:auto}
+.mat-section-head .mat-section-delete{color:#b23b3b}
+.mat-section-flag{margin:0 0 8px;padding:6px 10px;border-radius:8px;background:#fff7ec;font-size:12px;line-height:1.6;color:#785323}
+@media (max-width:640px){
+  .mat-section-head .text-button,.mat-section-head .chat-gap-upload{display:inline-flex;align-items:center;min-height:36px}
+}
+
+/* 材料正文超过 15 行左右折叠，可展开 */
+.mat-body-clamp{--clamp-height:330px}
+.mat-body-clamp.is-long:not(.is-open) .mat-body-text{max-height:var(--clamp-height);overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 56px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 56px),transparent)}
+.mat-body-toggle{margin-top:4px;font-size:12px;color:#174faf}
+
+/* 提交抽屉底部：官方系统说明和指南链接 */
+.guidance-policy-note{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:8px;padding:10px 12px;border-radius:8px;background:var(--drawer-soft,#f5f7fa);font-size:12px;line-height:1.6;color:#445267}
+.guidance-policy-note p{flex:1 0 100%;margin:0}
+.guidance-policy-note a{color:var(--blue-hover);text-decoration:underline;text-underline-offset:3px}

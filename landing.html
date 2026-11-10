@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f6fa">
+  <title>惠企政策平台 · 找到政策，准备申报</title>
+  <meta name="description" content="了解企业情况、查找候选政策、核对申报差距，按已有资料整理申报材料。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230c5ce8'/%3E%3Cpath d='M11 12h18v16H11zM16 8v24m8-24v24M8 20h24' stroke='white' fill='none' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/landing/policy-serif-display-v2.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="landing.css?v=20261102-material-cards">
+  <script defer src="expert-personas.js?v=20261102-material-cards"></script>
+  <script defer src="public-policy-data.js?v=20261102-material-cards"></script>
+  <script defer src="landing-data.js?v=20261102-material-cards"></script><script defer src="landing.js?v=20261102-material-cards"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8l-5-5ZM14 3v6h5M8 13h8M8 17h6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+  </defs></svg>
+  <header class="site-header wrap">
+    <a class="brand" href="landing.html" aria-label="惠企政策平台首页"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="22" rx="3"/><path d="M11 3v28M21 3v28M2 16h28"/></svg><span>惠企政策平台</span></a>
+    <button id="menu-toggle" class="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="landing-nav"><span></span><span></span></button>
+    <nav id="landing-nav" aria-label="主要导航"><a href="#opportunities">政策机会</a><a href="#experts">政策专家</a><a href="#how-it-works">如何工作</a><a href="#cases">企业扶持</a><a class="nav-action" href="index.html#dashboard">开始使用 <svg class="icon"><use href="#i-arrow"/></svg></a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">企业政策与申报服务</p><h1 id="hero-title">找到合适的政策，<br>备齐申报材料。</h1>
+        <p class="hero-description">查政策、看条件、补资料。<br class="desktop-break">从企业匹配到材料组稿，把每一步准备清楚。</p>
+        <form id="hero-query-form" class="hero-query" role="search"><label class="sr-only" for="hero-query">搜索政策</label><svg class="icon"><use href="#i-search"/></svg><input id="hero-query" name="query" type="search" maxlength="100" placeholder="搜索政策、行业或扶持方向" aria-describedby="hero-query-status"><button type="submit">找找政策 <svg class="icon"><use href="#i-arrow"/></svg></button></form>
+        <p id="hero-query-status" class="query-status" role="status"></p>
+        <div class="hero-links"><a class="text-button" href="index.html#dashboard">按企业情况匹配 <svg class="icon"><use href="#i-arrow"/></svg></a><a href="#how-it-works">看看如何工作</a></div>
+      </div>
+      <article class="hero-project-preview" aria-label="企业申报准备任务">
+        <header class="preview-header"><span>申报准备</span><span class="preview-status">有 2 项资料待补</span></header>
+        <div class="preview-company"><h2>企业研发申报</h2><p>软件企业 · 研发支持</p></div>
+        <ol class="preview-milestones" aria-label="申报准备事项">
+          <li><a href="index.html#task?task=task-innovation&amp;work=match"><span>01</span><strong>匹配政策</strong><small>已找到候选项目</small><svg class="icon"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="index.html#task?task=task-innovation&amp;work=diagnosis"><span>02</span><strong>核对差距</strong><small>还需补充 2 项资料</small><svg class="icon"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="index.html#task?task=task-innovation&amp;work=assembly"><span>03</span><strong>整理材料</strong><small>按已有资料与模板组稿</small><svg class="icon"><use href="#i-arrow"/></svg></a></li>
+        </ol>
+        <section class="preview-readiness" aria-label="资料准备情况"><div><span>申报资料</span><strong>4<small>/6 项</small></strong></div><progress value="4" max="6" aria-label="6项资料中已具备4项"></progress><p><span>待补充</span><span>费用归集表</span><span>年度财务报告</span></p></section>
+        <a class="preview-open" href="index.html#task?task=task-innovation&amp;work=diagnosis">查看准备清单 <svg class="icon"><use href="#i-arrow"/></svg></a>
+        <a class="preview-adviser" href="index.html#task?task=task-innovation&amp;work=diagnosis"><span class="portrait" style="--portrait-x:100%;--portrait-y:100%" aria-hidden="true"></span><div><strong>申报诊断顾问</strong><span>帮你核对条件，找到资料缺口</span></div><svg class="icon"><use href="#i-arrow"/></svg></a>
+      </article>
+    </section>
+
+    <section id="opportunities" class="opportunities section wrap" aria-labelledby="opportunity-title">
+      <div class="section-head"><h2 id="opportunity-title">找到你的行业，<br>看见政策机会。</h2><div class="section-intro"><p>研发、转型、人才与成长，<br>从企业正在做的事出发。</p></div></div>
+      <div class="industry-labels" role="group" aria-label="按行业查看政策"><button type="button" data-industry="物流行业" aria-pressed="false">物流行业</button><button type="button" data-industry="人工智能" aria-pressed="false">人工智能</button><button type="button" data-industry="金融行业" aria-pressed="false">金融行业</button><button type="button" data-industry="软件信息" aria-pressed="false">软件信息</button><button type="button" data-industry="先进制造" aria-pressed="false">先进制造</button><button type="button" data-industry="新能源" aria-pressed="false">新能源</button><button type="button" data-industry="生命健康" aria-pressed="false">生命健康</button><button type="button" data-industry="现代服务" aria-pressed="false">现代服务</button></div>
+      <div class="opportunity-overview" data-ui>
+        <div id="opportunity-summary" class="opportunity-summary"><h3>政策收录</h3><div class="opportunity-total"><strong data-stat="total">8</strong><span>项政策与申报通知</span></div><p>查看政策方向<br>与申报时间</p><a href="#policy-feed">查看政策原文 <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+        <div class="industry-distribution"><h3>支持方向</h3><div id="distribution-chart" class="distribution-chart"></div><div id="region-summary" class="region-summary" aria-label="地区覆盖"></div></div>
+      </div>
+      <div id="policy-feed" class="policy-feed">
+        <div class="policy-selection"><p id="selection-summary" aria-live="polite"></p><button id="reset-selection" class="text-button" type="button" hidden>查看全部政策</button></div>
+        <div class="policy-columns">
+          <section class="latest-policies" aria-labelledby="latest-title"><div class="section-subhead"><h3 id="latest-title">最新政策</h3><span id="policy-count" aria-live="polite"></span></div><div id="policy-list"></div><div id="policy-empty" class="empty-state" hidden><h3>没有找到相关政策</h3><p>换个关键词，再试一次。</p><button id="clear-search" class="text-button" type="button">查看全部政策</button></div><button id="show-more-policies" class="text-button" type="button">查看更多政策 <svg class="icon"><use href="#i-arrow"/></svg></button></section>
+          <section class="recommended-policies" aria-labelledby="recommended-title"><div class="section-subhead"><h3 id="recommended-title">为您推荐政策</h3></div><p id="recommendation-context" class="recommendation-context"></p><div id="recommended-policy-list"></div></section>
+        </div>
+        <section id="policy-reader" class="policy-reader" tabindex="-1" aria-label="政策条件与材料" hidden></section>
+      </div>
+    </section>
+
+    <section id="experts" class="experts-section section" aria-labelledby="experts-title"><div class="wrap">
+      <div class="section-head"><h2 id="experts-title">遇到哪一步，<br>就找哪方面的帮助。</h2><div class="section-intro"><p>从理清企业情况，到整理申报材料。<br>每位专家都有明确的工作和交付。</p></div></div>
+      <div class="experts-toolbar"><div class="main-tabs" role="tablist" aria-label="专家与专家团"><button id="experts-tab" type="button" role="tab" data-expert-tab="experts" aria-controls="expert-grid" aria-selected="true" class="is-active">专家</button><button id="teams-tab" type="button" role="tab" data-expert-tab="teams" aria-controls="team-grid" aria-selected="false" tabindex="-1">专家团</button></div><span>按需选择，也可以一起协作</span></div>
+      <div id="expert-grid" class="expert-grid" role="tabpanel" aria-labelledby="experts-tab"></div><div id="team-grid" class="team-grid" role="tabpanel" aria-labelledby="teams-tab" hidden></div>
+    </div></section>
+
+    <section id="how-it-works" class="how-section section wrap" aria-labelledby="how-title">
+      <div class="section-head"><h2 id="how-title">一句申报目标，<br>变成具体的下一步。</h2><div class="section-intro"><p>用一份企业申报任务，看看平台如何处理。<br>对话把问题说清楚，结果留在清单与材料里。</p></div></div>
+      <div id="work-steps" class="work-steps" role="tablist" aria-label="工作阶段"><button id="step-profile" type="button" data-work-step="profile" role="tab" aria-controls="work-preview" aria-selected="true" class="is-active"><span>了解企业</span><small>整理档案，查找政策</small></button><button id="step-diagnosis" type="button" data-work-step="diagnosis" role="tab" aria-controls="work-preview" aria-selected="false" tabindex="-1"><span>核对差距</span><small>缺什么，先补什么</small></button><button id="step-assembly" type="button" data-work-step="assembly" role="tab" aria-controls="work-preview" aria-selected="false" tabindex="-1"><span>整理材料</span><small>按模板组稿，人工确认</small></button></div>
+      <div id="work-preview" class="work-preview" role="tabpanel" aria-live="polite" data-ui></div>
+    </section>
+
+    <section class="evidence-section section" aria-labelledby="evidence-title"><div class="wrap evidence-layout"><div class="evidence-heading"><h2 id="evidence-title">每一步，<br>都有依据可查。</h2><p>政策为什么匹配，资料还缺什么，<br>章节从哪里来，都能继续核对。</p><a class="text-button" href="index.html#task?task=task-innovation&amp;work=assembly">打开一份材料草稿 <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="evidence-content"><div class="source-document" data-ui><div class="source-document-head"><svg class="icon"><use href="#i-file"/></svg><strong>企业情况与研发基础</strong><span>草稿</span></div><p>企业从事管理软件与数据协作工具的开发，已提供研发项目记录及相关成果材料。</p><div class="source-reference"><span>本章引用</span><span>企业简介</span><span>研发项目记录</span></div><div class="version-example"><div><span>V1</span><p>财务与研发投入信息待补充</p></div><svg class="icon"><use href="#i-arrow"/></svg><div><span>V2</span><p>补齐资料后，重新核对与组稿</p></div></div></div><div class="evidence-points"><div><h3>按企业情况核对</h3><p>保留匹配原因，条件不明确的地方继续确认。</p></div><div><h3>缺失信息明确留待补</h3><p>已有资料用于组稿，未提供的事实不自动补写。</p></div><div><h3>修改与来源一起保留</h3><p>保存新版本，原稿与引用资料继续可查。</p></div><div><h3>提交前由企业确认</h3><p>人工核对事实与附件，再按正式渠道办理。</p></div></div></div></div></section>
+
+    <section id="cases" class="cases-section section wrap" aria-labelledby="cases-title"><div class="section-head"><h2 id="cases-title">企业获得的支持，<br>看得见。</h2><div class="section-intro"><p>研发投入、数字化车间、智能工厂，<br>政策支持企业发展的具体环节。</p></div></div><div id="case-grid" class="case-grid"></div></section>
+
+  </main>
+  <footer id="start" class="start-section"><div class="wrap"><a class="brand footer-brand" href="landing.html" aria-label="惠企政策平台首页"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="22" rx="3"/><path d="M11 3v28M21 3v28M2 16h28"/></svg><span>惠企政策平台</span></a><div class="start-layout"><div><h2>下一项申报，<br>从你的企业开始。</h2><p>说说你想申请的支持，或先理清企业情况。</p></div><div class="start-actions"><a href="index.html#dashboard" class="button button-light">开始使用 <svg class="icon"><use href="#i-arrow"/></svg></a><a href="index.html#task?task=task-innovation">看看如何准备 <svg class="icon"><use href="#i-arrow"/></svg></a></div></div></div></footer>
+  <noscript><div class="noscript wrap"><p>开启JavaScript后，可查询政策、选择专家和查看工作过程。</p><a href="index.html#dashboard">进入平台开始使用</a></div></noscript>
+</body>
+</html>

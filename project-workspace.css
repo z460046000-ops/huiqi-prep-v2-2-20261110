@@ -1,0 +1,527 @@
+/* 项目详情采用独立视口工作区；普通工作台继续按页面自然滚动。 */
+.in-project { overflow: hidden; }
+.in-project .main-shell { height: 100dvh; min-height: 0; overflow: hidden; }
+.in-project #main-content { height: 100%; min-height: 0; max-width: none; padding: 20px 24px; }
+.in-project #page-content { height: 100%; min-height: 0; }
+.in-project .project-workspace { height: 100%; min-width: 0; min-height: 0; }
+.in-project .workspace-body { display: grid; grid-template-columns: minmax(0, 1fr) 320px; grid-template-rows: minmax(0, 1fr); gap: 24px; height: 100%; min-height: 0; align-items: stretch; }
+.in-project .workspace-main { display: flex; flex-direction: column; min-width: 0; min-height: 0; height: 100%; }
+.in-project .project-workspace-header { display: flex; align-items: center; flex: 0 0 auto; min-width: 0; min-height: 52px; gap: 16px; margin: 0 0 14px; }
+.in-project .project-heading { display: flex; align-items: center; min-width: 0; gap: 10px; }
+.in-project .project-heading > .icon-button { flex: 0 0 32px; width: 32px; height: 32px; min-height: 32px; }
+.in-project .project-heading > .icon-button svg { transform: rotate(180deg); width: 18px; height: 18px; }
+.in-project .project-heading > div { min-width: 0; }
+.in-project .project-heading h1 { font-size: 21px; line-height: 1.4; letter-spacing: -.025em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.in-project .project-heading > div > p { color: var(--muted); font-size: 11px; line-height: 1.6; margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.in-project .workspace-conversation { display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; min-width: 0; border: 1px solid #e3e8ef; border-radius: 12px; background: #fff; overflow: hidden; }
+
+/* 专家卡与下方同一面板关联；卡片高度不随状态文案改变。 */
+.in-project .workspace-status-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-auto-rows: 86px; flex: 0 0 auto; gap: 8px; margin: 0; padding: 10px 10px 12px; min-width: 0; overflow-x: auto; scrollbar-width: none; scroll-padding-inline: 10px; }
+.in-project .work-status-card { display: flex; flex-direction: column; justify-content: center; min-width: 0; height: 86px; padding: 10px; text-align: left; border-radius: 8px; background: #f5f6f8; box-shadow: inset 0 0 0 1px transparent; transition: background .16s, box-shadow .16s; }
+.in-project .work-status-card:hover { background: #eef2f7; }
+.in-project .work-status-card.is-selected,
+.in-project .work-status-card[aria-selected="true"] { background: #edf3ff; box-shadow: inset 0 0 0 1.5px #83a7e3; }
+.in-project .work-status-card:focus-visible { outline-offset: -3px; }
+.in-project .work-status-top { display: flex; align-items: center; justify-content: space-between; gap: 5px; min-height: 15px; margin: 0 0 8px; color: #6d7887; font-size: 10px; line-height: 1.5; }
+.in-project .work-status-top > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.in-project .work-status-top > span:first-child { display: inline; width: auto; height: auto; padding: 0; border-radius: 0; background: transparent; font-size: 10px; color: #6c7786; }
+.in-project .work-status-top > span:last-child { font-size: 10px; }
+.in-project .work-status-card[data-status="waiting"] .work-status-top > span:last-child,
+.in-project .work-status-card[data-status="review"] .work-status-top > span:last-child { color: #8a541c; }
+.in-project .work-status-card[data-status="done"] .work-status-top > span:last-child { color: #28664b; }
+.in-project .work-status-card[data-status="ready"] .work-status-top > span:last-child { color: #285caa; }
+.in-project .work-status-card[data-status="blocked"] .work-status-top > span:last-child { color: #7c8491; }
+.in-project .work-expert-identity { display: flex; align-items: center; gap: 8px; min-width: 0; margin: 0; }
+.in-project .work-expert-identity h2 { margin: 0; font-size: 12px; line-height: 1.55; font-weight: 600; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.in-project .work-status-card.is-selected h2,
+.in-project .work-status-card[aria-selected="true"] h2 { color: #174faf; }
+.in-project .work-expert-avatar { display: block; flex: 0 0 32px; width: 32px; height: 32px; border-radius: 50%; background-image: url('assets/landing/policy-advisers.webp'); background-size: 300% 200%; background-position: var(--expert-x) var(--expert-y); background-repeat: no-repeat; background-color: #e5ebf4; }
+.in-project .work-human-avatar { display: grid; place-items: center; flex: 0 0 32px; width: 32px; height: 32px; border-radius: 8px; color: #66758b; background: #e7ebf1; }
+.in-project .work-human-avatar .icon { width: 18px; height: 18px; }
+.in-project .work-status-card.is-selected .work-human-avatar { color: #285b9e; background: #dfe9fa; }
+.in-project .workspace-panel { flex: 1 1 0; display: flex; flex-direction: column; min-width: 0; min-height: 0; border-top: 1px solid #e4eaf2; overflow: hidden; }
+.in-project .workspace-tabs { display: flex; align-items: center; flex: 0 0 auto; gap: 18px; border: 0; margin: 0; }
+.in-project .workspace-tabs button { position: relative; color: #707b8a; font-size: 12px; line-height: 20px; min-height: 34px; padding: 6px 0; white-space: nowrap; }
+.in-project .workspace-tabs button:hover { color: var(--ink); }
+.in-project .workspace-tabs button.is-active { color: #2459a8; font-weight: 600; }
+.in-project .workspace-tabs button.is-active::after { content: ""; position: absolute; inset-inline: 0; bottom: -1px; height: 2px; border-radius: 2px; background: var(--blue); }
+
+/* 对话只有中间消息区域滚动，身份栏和输入栏位置固定。 */
+.in-project .workspace-panel > .adviser-card { display: flex; flex-direction: column; flex: 1 1 0; height: 100%; min-height: 0; min-width: 0; padding: 0; background: #fff; border-radius: 0; overflow: hidden; }
+.in-project .adviser-card > header { display: flex; align-items: center; flex: 0 0 auto; gap: 10px; min-height: 65px; margin: 0; padding: 13px 18px; border-bottom: 1px solid #edf0f4; }
+.in-project .adviser-card > header > div:not(.workspace-tabs) { display: grid; gap: 2px; min-width: 0; }
+.in-project .adviser-card > header .workspace-tabs { display: flex; margin-left: auto; }
+.in-project .adviser-card h2 { font-size: 14px; line-height: 1.5; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.in-project .adviser-card > header .muted { font-size: 11px; line-height: 1.6; }
+.in-project .chat-header-identity { flex: 1 1 0; }
+.in-project .chat-expert-meta { display: flex; align-items: center; flex-wrap: nowrap; gap: 8px; min-width: 0; }
+.in-project .chat-expert-subject { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.in-project .chat-expert-status { font-size: 10px; line-height: 1.6; color: #7d8a9d; white-space: nowrap; }
+.in-project .chat-expert-avatar { display: block; flex: 0 0 32px; width: 32px; height: 32px; border-radius: 50%; background: #e6eefc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 24' fill='%231f5fd6'%3E%3Cpath d='M10 4l1.9 5.6 5.6 1.9-5.6 1.9L10 19l-1.9-5.6-5.6-1.9 5.6-1.9L10 4Zm7.5 12l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z'/%3E%3C/svg%3E") center / 62% no-repeat; }
+.in-project .chat-scroll-region { flex: 1 1 0; min-width: 0; min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-gutter: auto; padding: 19px 18px 8px; }
+.in-project .adviser-card .chat-messages { display: flex; flex-direction: column; align-items: stretch; gap: 18px; max-height: none; min-height: 0; height: auto; overflow: visible; padding: 0; }
+.in-project .chat-message-row { display: flex; align-items: flex-start; align-self: flex-start; gap: 9px; width: min(92%, 780px); min-width: 0; }
+.in-project .chat-message-row.is-user { align-self: flex-end; flex-direction: row-reverse; }
+.in-project .chat-message-avatar { display: grid; place-items: center; flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; color: #677b93; background: #e5ecf5; overflow: hidden; }
+.in-project .chat-message-avatar .icon { width: 15px; height: 15px; }
+.in-project .chat-message-avatar.portrait,
+.in-project .chat-message-avatar.chat-persona-avatar,
+.in-project .chat-message-expert-avatar { background: #e6eefc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 24' fill='%231f5fd6'%3E%3Cpath d='M10 4l1.9 5.6 5.6 1.9-5.6 1.9L10 19l-1.9-5.6-5.6-1.9 5.6-1.9L10 4Zm7.5 12l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z'/%3E%3C/svg%3E") center / 62% no-repeat; }
+.in-project .chat-message-user-avatar { font-size: 11px; font-weight: 500; color: #5b7598; }
+.in-project .chat-message-body { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; max-width: calc(100% - 37px); }
+.in-project .is-user .chat-message-body { align-items: flex-end; }
+.in-project .chat-message-name { display: block; color: #7b8795; font-size: 10px; line-height: 1.6; margin: 0 2px 5px; }
+.in-project .adviser-card .chat-message { width: fit-content; max-width: 100%; margin: 0; padding: 11px 14px; font-size: 13px; line-height: 1.85; white-space: pre-wrap; overflow-wrap: anywhere; color: #445267; border-radius: 3px 10px 10px; background: #f3f5f8; }
+.in-project .adviser-card .chat-user { align-self: auto; color: #294574; background: #e7effc; border-radius: 10px 3px 10px 10px; }
+.in-project .adviser-card .chat-context { margin: 0; }
+/* 当前工作结果由专家以同一种对话气泡发出，确认操作跟随内容。 */
+.in-project .chat-confirmation-row{margin-top:2px}
+.in-project .chat-confirmation-row>.chat-message-body{flex:1}
+.in-project .adviser-card .chat-confirmation-bubble{width:100%;white-space:normal;padding:15px 16px 14px}
+.in-project .chat-confirmation-bubble h3{font-size:13px;line-height:1.7;font-weight:600;color:#33465f;margin:0 0 6px}
+.in-project .chat-confirmation-summary{font-size:12px;line-height:1.85;color:#62748b;margin:0 0 12px}
+.in-project .chat-confirmation-facts{display:grid;gap:8px;margin:0;font-size:12px;line-height:1.85}
+.in-project .chat-confirmation-facts>div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:baseline}
+.in-project .chat-confirmation-facts dt{color:#7a8797}
+.in-project .chat-confirmation-facts dd{margin:0;color:#3d526f;overflow-wrap:anywhere}
+.in-project .chat-confirmation-details,.in-project .chat-confirmation-blockers{padding-left:16px;margin:10px 0 0;font-size:12px;line-height:1.9;color:#63738a}
+.in-project .chat-confirmation-blockers{color:#916329}
+.in-project .chat-confirmation-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;margin-top:15px;padding-top:12px;border-top:1px solid #e4e9f0}
+.in-project .chat-confirmation-actions .button{font-size:12px;min-height:36px;padding:8px 13px}
+.in-project .chat-confirmation-actions .text-button{font-size:12px;min-height:36px}
+.in-project .chat-confirmation-bubble.is-clickable{position:relative;transition:box-shadow .15s,background .15s}
+.in-project .chat-confirmation-bubble.is-clickable:hover{background:#f7faff;box-shadow:inset 0 0 0 1px #88a9df}
+.in-project .chat-confirmation-bubble.is-clickable:has(.chat-card-open:focus-visible){box-shadow:inset 0 0 0 2px #88a9df}
+.in-project .chat-confirmation-bubble.is-clickable .chat-confirmation-actions>:not(.chat-card-open){position:relative;z-index:1}
+.in-project .chat-confirmation-bubble .chat-card-open{position:static}
+.in-project .chat-confirmation-bubble .chat-card-open::after{content:'';position:absolute;inset:0;border-radius:inherit}
+.in-project .chat-project-history { margin: 15px 0; }
+.in-project .chat-project-history > summary { width: fit-content; padding: 7px 0; font-size: 11px; color: #758294; cursor: pointer; }
+.in-project .chat-project-history > summary span { color: #8c96a5; margin-left: 6px; font-variant-numeric: tabular-nums; }
+.in-project .adviser-card .chat-project-history .chat-messages { min-height: 0; max-height: none; margin-top: 10px; padding: 12px 0 2px 13px; border-left: 2px solid #e7ecf3; }
+.in-project .chat-composer { flex: 0 0 auto; min-width: 0; background: #fff; border-top: 1px solid #edf0f4; padding: 10px 16px 14px; }
+.in-project .chat-composer .chat-suggestions { display: flex; align-items: center; flex-wrap: nowrap; gap: 7px; margin: 0 0 8px; padding: 0 0 2px; max-height: 34px; overflow-x: auto; overflow-y: hidden; }
+.in-project .chat-suggestions > button { flex: 0 0 auto; min-height: 30px; padding: 5px 9px; color: #5f7390; background: #f4f6f9; border-radius: 6px; font-size: 11px; line-height: 18px; white-space: nowrap; }
+.in-project .chat-suggestions > button:hover { color: #265aa5; background: #eaf0fa; }
+.in-project #adviser-chat-form { display: flex; align-items: flex-end; gap: 10px; min-width: 0; margin: 0; padding: 9px 11px; border: 1px solid #dce3ed; border-radius: 10px; background: #fff; }
+.in-project #adviser-chat-form:focus-within { border-color: #88a9df; box-shadow: 0 0 0 2px #edf3fe; }
+.in-project #adviser-message { display: block; flex: 1 1 0; width: 0; height: 56px; min-height: 56px; max-height: 56px; padding: 4px 2px; border: 0; outline: 0; resize: none; overflow-x: hidden; overflow-y: auto; background: transparent; color: var(--ink); font-size: 13px; line-height: 24px; }
+.in-project #adviser-message:focus-visible { outline: none; }
+.in-project .chat-send { flex: 0 0 34px; width: 34px; height: 34px; min-height: 34px; margin-bottom: 2px; border-radius: 8px; }
+
+/* 工作内容沿用编辑器，正文在面板内滚动，控件始终可以到达。 */
+.in-project .workspace-work-heading { display: flex; align-items: center; justify-content: space-between; flex: 0 0 auto; gap: 18px; min-height: 64px; padding: 13px 18px; margin: 0; border-bottom: 1px solid #edf0f4; }
+.in-project .workspace-work-heading h2 { font-size: 15px; line-height: 1.5; }
+.in-project .workspace-work-heading p,
+.in-project .workspace-work-heading .muted { color: var(--muted); font-size: 11px; line-height: 1.7; }
+.in-project .workspace-work-heading .tag { flex-shrink: 0; }
+.in-project .workspace-content { flex: 1 1 0; min-height: 0; min-width: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: contain; scrollbar-gutter: auto; padding: 22px 20px 28px; }
+.in-project .workspace-content > .page-header { align-items: flex-start; margin-bottom: 22px; }
+.in-project .workspace-content > .page-header h1,
+.in-project .workspace-document-heading h2 { font-size: 19px; line-height: 1.55; }
+.in-project .workspace-content > .page-header p { font-size: 12px; }
+.in-project .workspace-content .page-actions { flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.in-project .workspace-document-heading { margin-bottom: 20px; }
+.in-project .workspace-document-heading .page-actions:empty { display: none; }
+.in-project .workspace-content .profile-layout,
+.in-project .workspace-content .policy-detail-grid,
+.in-project .workspace-content .mat-editor-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+.in-project .workspace-content .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.in-project .workspace-content .form-actions { flex-wrap: wrap; gap: 13px; }
+.in-project .workspace-content .form-actions > .muted { max-width: 42ch; }
+.in-project .workspace-content .source-row { align-items: flex-start; }
+.in-project .workspace-content .source-row > div { flex-wrap: wrap; }
+.in-project .workspace-content .source-row .text-button { flex-shrink: 0; white-space: nowrap; }
+.in-project .workspace-content .policy-list { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.in-project .workspace-content .policy-card { padding: 21px; }
+.in-project .workspace-content .policy-card h2 { font-size: 17px; }
+.in-project .workspace-content .policy-side { padding: 20px; }
+.in-project .workspace-content .policy-side .mock-score { flex-wrap: nowrap; align-items: center; }
+.in-project .workspace-content .policy-side .button { width: auto; }
+.in-project .workspace-content .policy-side > .text-button { display: inline-flex; margin-left: 14px; }
+.in-project .workspace-content .diagnosis-overview { grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 22px; margin-bottom: 28px; }
+.in-project .workspace-content .diagnosis-overview .content-panel + .content-panel { padding: 18px 0 0; border-left: 0; border-top: 1px solid #dfe4ec; }
+.in-project .workspace-content .diagnosis-overview h2 { font-size: 21px; }
+.in-project .workspace-content .requirement-row { flex-direction: column; align-items: flex-start; gap: 10px; padding-block: 19px; }
+.in-project .workspace-content .requirement-actions { flex-wrap: wrap; align-self: flex-end; justify-content: flex-end; gap: 12px; }
+.in-project .workspace-content .requirement-heading { flex-wrap: wrap; gap: 8px; }
+.in-project .workspace-content .next-suggestion { padding: 21px; }
+.in-project .workspace-content .mat-page { padding-bottom: 4px; }
+.in-project .workspace-content .mat-header { flex-direction: column; gap: 12px; margin-bottom: 22px; }
+.in-project .workspace-content .mat-header h1 { font-size: 20px; }
+.in-project .workspace-content .mat-subtitle { font-size: 12px; }
+.in-project .workspace-content .mat-header-actions { padding-top: 0; }
+.in-project .workspace-content .mat-chapter-nav { position: static; display: flex; flex-direction: row; flex-wrap: nowrap; gap: 5px; overflow-x: auto; padding: 0 0 5px; }
+.in-project .workspace-content .mat-chapter-nav > p,
+.in-project .workspace-content .mat-chapter-nav small { display: none; }
+.in-project .workspace-content .mat-chapter-nav button { flex-shrink: 0; white-space: nowrap; min-height: 36px; padding: 8px 10px; font-size: 11px; background: #f3f5f8; }
+.in-project .workspace-content .mat-editor-toolbar { align-items: flex-start; gap: 16px; margin-bottom: 22px; }
+.in-project .workspace-content .mat-editor { min-height: 190px; }
+.in-project .workspace-content .mat-gap-notice { padding: 17px 19px; margin-bottom: 22px; }
+.in-project .workspace-content .mat-confirmation { flex-wrap: wrap; gap: 17px; }
+.in-project .workspace-content .source-editor { min-height: 260px; }
+.in-project .workspace-content .empty-state { padding: 36px 22px; }
+
+/* 右侧资料索引：三个信息模块；文件和版本使用同一卡片内的行。 */
+.in-project .workspace-context { display:block; position:static; min-width:0; min-height:0; height:100%; overflow-y:auto; overflow-x:hidden; overscroll-behavior-y:contain; padding:14px; background:#f3f5f8; border:0; border-radius:14px; }
+.in-project .workspace-context-index { display:grid; gap:14px; }
+.in-project .context-card { min-width:0; margin:0; padding:18px; background:#fff; border:0; border-radius:12px; box-shadow:0 3px 14px #23365208; }
+.in-project .context-card h2 { margin:0 0 14px; font-size:14px; line-height:1.5; letter-spacing:-.01em; }
+.in-project .context-card h3 { font-size:12px; margin:0 0 10px; }
+.in-project .context-company { font-size:15px; font-weight:600; line-height:1.65; color:#26354a; margin:0 0 15px; overflow-wrap:anywhere; }
+.in-project .workspace-summary dl { display:grid; gap:11px; margin:0; }
+.in-project .workspace-summary dl>div { display:grid; grid-template-columns:56px minmax(0,1fr); align-items:baseline; gap:10px; font-size:12px; line-height:1.85; }
+.in-project .workspace-summary dt { color:#6c7888; }
+.in-project .workspace-summary dd { min-width:0; margin:0; color:#3f4e63; overflow-wrap:anywhere; }
+.in-project .project-progress { display:grid; grid-template-columns:1fr auto; row-gap:8px; column-gap:12px; width:100%; padding-top:16px; margin:18px 0 0; border-top:1px solid #edf0f4; font-variant-numeric:tabular-nums; }
+.in-project .project-progress>div { display:flex; align-items:center; justify-content:space-between; gap:12px; grid-column:1/-1; }
+.in-project .project-progress>div>span { color:#586a80; font-size:12px; }
+.in-project .project-progress strong { color:#253e64; font-size:26px; line-height:1.25; font-weight:600; letter-spacing:-.03em; }
+.in-project .project-progress strong small { margin-left:2px; font-size:12px; letter-spacing:0; }
+.in-project .project-progress progress { grid-column:1/-1; height:5px; margin:0; }
+.in-project .project-progress progress::-webkit-progress-value { background:#2464c6; }
+.in-project .project-progress progress::-moz-progress-bar { background:#2464c6; }
+.in-project .project-progress>small { grid-column:1/-1; font-size:11px; color:#66768b; }
+.in-project .workspace-result-heading { display:flex; gap:9px; align-items:center; margin-bottom:14px; }
+.in-project .workspace-result-heading>div { min-width:0; }
+.in-project .workspace-result-heading h2 { margin:0 0 3px; font-size:13px; }
+.in-project .workspace-result-heading p { font-size:11px; line-height:1.7; color:#68768a; }
+.in-project .context-expert-avatar { display:block; width:32px; height:32px; flex:0 0 32px; border-radius:50%; background-image:url('assets/landing/policy-advisers.webp'); background-size:300% 200%; background-position:var(--expert-x) var(--expert-y); background-color:#edf1f7; }
+.in-project .workspace-result-body>p { font-size:13px; line-height:1.9; color:#384b65; margin:0 0 12px; overflow-wrap:anywhere; }
+.in-project .workspace-result-body ul { padding-left:17px; font-size:12px; line-height:1.9; margin:0 0 16px; color:#576b85; }
+.in-project .workspace-result-body>.text-button { display:flex; align-items:center; justify-content:space-between; width:100%; text-align:left; white-space:normal; font-size:12px; line-height:1.6; min-height:40px; padding:9px 12px; border-radius:8px; color:#2459a8; background:#edf3fe; }
+.in-project .workspace-result-body>.text-button:hover { background:#e1ebfc; }
+.in-project .workspace-result-body>.text-button+.text-button { background:none; padding-bottom:0; font-size:11px; color:#667a94; }
+.in-project .workspace-source-list { display:block; }
+.in-project .context-card-heading { display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:6px; }
+.in-project .context-card-heading h2 { margin:0 0 6px; }
+.in-project .context-card-heading>span { font-size:11px; color:#69798e; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.in-project .workspace-source-list>button { display:flex; align-items:center; gap:9px; width:calc(100% + 12px); min-height:54px; margin:0 -6px; padding:10px 6px; border:0; border-top:1px solid #edf0f4; border-radius:0; text-align:left; font-size:12px; line-height:1.6; color:#41526a; }
+.in-project .workspace-source-list>button:hover { background:#f6f8fc; }
+.in-project .workspace-source-list>button>span { flex:1; min-width:0; overflow-wrap:anywhere; }
+.in-project .workspace-source-list>button>.icon { width:17px; height:17px; color:#7390b5; flex-shrink:0; }
+.in-project .workspace-source-list>button>.icon:last-child { width:14px; height:14px; color:#9ba8ba; }
+.in-project .workspace-source-list>button small { display:block; font-size:11px; color:#708096; margin-top:3px; }
+.in-project .workspace-source-list>button[data-provided="false"] small { color:#946126; }
+.in-project .workspace-source-list>button[data-provided="false"]>.icon:first-child { color:#b28c58; }
+.in-project .workspace-related-links { display:flex; gap:6px 12px; flex-wrap:wrap; border-top:1px solid #edf0f4; margin-top:3px; padding-top:12px; }
+.in-project .workspace-related-links .text-button { display:inline-flex; align-items:center; justify-content:space-between; min-height:34px; font-size:11px; gap:6px; color:#517095; }
+.in-project .workspace-related-links .icon { width:13px; height:13px; }
+/* 三块上下文：企业简介、输出文件、不可变历史版本。 */
+.in-project .context-company{margin-bottom:5px}
+.in-project .context-company-description{font-size:12px;line-height:1.8;color:#78879a;margin:0 0 16px}
+.in-project .company-profile-status{color:#74879c;background:#f1f5fa;border-radius:4px;padding:2px 6px;font-size:10px}
+.in-project .workspace-company-materials{margin-top:17px;border-top:1px solid #edf0f4}
+.in-project .workspace-company-materials>summary{display:flex;align-items:center;justify-content:space-between;gap:8px;list-style:none;padding:13px 0 0;font-size:12px;cursor:pointer;color:#456892}
+.in-project .workspace-company-materials>summary::-webkit-details-marker{display:none}
+.in-project .workspace-company-materials>summary>span:last-child{display:flex;align-items:center;gap:7px;color:#8692a2;font-size:10px}
+.in-project .workspace-company-materials>summary .icon{width:13px;height:13px;transition:transform .15s}
+.in-project .workspace-company-materials[open]>summary{padding-bottom:11px}
+.in-project .workspace-company-materials[open]>summary .icon{transform:rotate(90deg)}
+.in-project .workspace-company-materials .text-button{font-size:11px;min-height:36px}
+.in-project .workspace-output-list{display:grid;gap:5px}
+.in-project .workspace-output-item{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:8px 9px;border-radius:8px;text-align:left;color:#5b7495}
+.in-project .workspace-output-item>.icon{width:18px;height:18px;flex:none}
+.in-project .workspace-output-item>span:nth-child(2){display:block;min-width:0;flex:1}
+.in-project .workspace-output-item strong{display:block;color:#42516a;font-size:12px;font-weight:500;line-height:1.7}
+.in-project .workspace-output-item small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:#8a96a6;font-size:10px;line-height:1.7;margin-top:2px;overflow-wrap:anywhere}
+.in-project .workspace-output-item:not(.is-current) small{display:none}
+.in-project .workspace-output-item .output-state{font-size:10px;flex:none;color:#939eac}
+.in-project .workspace-output-item .output-state.is-ready{color:#637fa4}
+.in-project .workspace-output-item.is-current{background:#edf3fe}
+.in-project .workspace-output-item.is-current strong{color:#245aa3}
+.in-project .workspace-output-item:enabled:hover{background:#f2f6fc}
+.in-project .workspace-output-item:disabled{opacity:1;cursor:default}
+.in-project .workspace-output-item:disabled strong{color:#7c8898}
+.in-project .workspace-output-item:disabled>.icon{color:#b0bac8}
+.in-project .workspace-version-list{margin:0;padding:18px;border:0}
+.in-project .workspace-version-item{display:flex;align-items:center;gap:10px;width:100%;min-height:65px;padding:12px 0;border-top:1px solid #edf0f4;text-align:left}
+.in-project .workspace-version-item:hover .workspace-version-copy strong{color:var(--blue)}
+.in-project .workspace-version-mark{display:grid;place-items:center;flex:none;width:31px;height:35px;background:#f2f5f9;border-radius:6px;color:#69809f;font:500 12px/1 'DIN Alternate',sans-serif;font-variant-numeric:tabular-nums}
+.in-project .workspace-version-copy{flex:1;min-width:0}
+.in-project .workspace-version-copy strong{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:11px;line-height:1.7;font-weight:500;color:#52647e;overflow-wrap:anywhere}
+.in-project .workspace-version-copy time{display:block;color:#8d99a9;font-size:10px;line-height:1.7;margin-top:3px;font-variant-numeric:tabular-nums}
+.in-project .version-state{flex:none;font-size:10px;color:#8d744e}
+.in-project .version-state.is-confirmed{color:#497b63}
+.in-project .workspace-version-empty{display:flex;align-items:center;gap:10px;padding:12px 0 4px;color:#9aa7b7}
+.in-project .workspace-version-empty .icon{width:23px;height:23px;flex:none}
+.in-project .workspace-version-empty p{font-size:11px;line-height:1.8}
+.in-project .workspace-compare-link{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:13px 0 0;border-top:1px solid #edf0f4;color:#50729b;font-size:11px}
+.in-project .workspace-compare-link .icon{width:14px;height:14px}
+.in-project .workspace-version-list>p,.in-project .workspace-source-list>p{font-size:12px;color:#748196}
+.in-project .recent-project.is-active { color:var(--blue); font-weight:600; }
+
+/* 横向专家导航的方向按钮只在实际溢出时出现。 */
+.in-project .workspace-expert-strip { display:flex; align-items:center; flex:0 0 auto; min-width:0; padding-inline:6px; }
+.in-project .workspace-expert-strip>.workspace-status-grid { flex:1 1 0; min-width:0; }
+.in-project .expert-scroll-control { display:grid; place-items:center; width:25px; height:42px; flex:0 0 25px; border-radius:6px; color:#56719a; }
+.in-project .expert-scroll-control:hover { background:#f0f4fa; }
+.in-project .expert-scroll-control .icon { width:16px; height:16px; }
+.in-project .expert-scroll-control[data-direction="-1"] .icon { transform:rotate(180deg); }
+.in-project .expert-scroll-control:disabled { opacity:.25; }
+
+/* 资料在右侧展开，专家对话保持在原来的位置。 */
+.in-project .is-document-open>.workspace-context { display:flex; flex-direction:column; padding:0; background:#fff; border:1px solid #e3e8ef; overflow:hidden; }
+.in-project .workspace-document { display:flex; flex-direction:column; flex:1 1 0; height:100%; min-width:0; min-height:0; }
+.in-project .workspace-document-toolbar { display:flex; align-items:center; gap:12px; flex:0 0 auto; min-height:64px; padding:13px 20px; border-bottom:1px solid #e8edf4; }
+.in-project .workspace-document-toolbar>button { display:flex; align-items:center; gap:7px; min-height:36px; color:#42658e; font-size:12px; flex-shrink:0; }
+.in-project .workspace-document-toolbar>button>.icon { transform:rotate(180deg); width:15px; }
+.in-project .workspace-document-toolbar>h2 { margin:0 0 0 auto; font-size:13px; color:#697b90; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.in-project .workspace-document>.workspace-content { flex:1 1 0; min-height:0; padding:22px; }
+.in-project .workspace-document .form-grid { grid-template-columns:1fr; }
+.in-project .workspace-document .mat-compare-columns { grid-template-columns:1fr; }
+@media (max-width: 1370px) {
+  .in-project .workspace-body { gap: 20px; }
+  .in-project .workspace-status-grid { grid-template-columns: repeat(5, minmax(126px, 1fr)); }
+
+}
+@media (max-width: 1100px) {
+  .in-project #main-content { padding: 18px 20px; }
+  .in-project .workspace-body { grid-template-columns: minmax(0, 1fr) 260px; gap: 18px; }
+
+  .in-project .workspace-status-grid { grid-template-columns: repeat(5, 128px); gap: 7px; }
+  .in-project .adviser-card > header { padding-inline: 15px; }
+  .in-project .chat-scroll-region { padding-inline: 15px; }
+  .in-project .workspace-content { padding-inline: 17px; }
+}
+@media (max-width: 1000px) and (min-width: 901px) {
+  .in-project #main-content { padding-inline: 16px; }
+  .in-project .workspace-body { grid-template-columns: minmax(0, 1fr) 240px; gap: 15px; }
+
+}
+@media (max-width: 900px) {
+  .in-project #main-content { padding: 16px; }
+  .in-project .workspace-body { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; gap: 14px; }
+  .in-project .workspace-context { height:clamp(120px,24dvh,190px); padding:12px; border:0; }
+
+  .in-project .project-progress strong { font-size: 19px; }
+
+
+  .in-project .workspace-tabs { gap: 16px; }
+  .in-project .workspace-work-heading { gap: 12px; }
+  .in-project .workspace-content .form-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 700px) {
+  .in-project .mobile-header { height: 52px; min-height: 52px; padding-inline: 12px; font-size: 14px; }
+  .in-project #main-content { height: calc(100% - 52px); padding: 10px 12px 12px; }
+  .in-project .workspace-body { gap: 11px; }
+  .in-project .project-workspace-header { min-height: 43px; margin-bottom: 10px; }
+  .in-project .project-heading { gap: 7px; }
+  .in-project .project-heading > .icon-button { width: 28px; height: 28px; min-height: 28px; flex-basis: 28px; }
+  .in-project .project-heading h1 { font-size: 18px; }
+  .in-project .project-heading > div > p { font-size: 10px; margin-top: 2px; }
+  .in-project .workspace-status-grid { grid-template-columns: repeat(5, 130px); grid-auto-rows: 82px; padding: 8px 8px 10px; }
+  .in-project .work-status-card { height: 82px; padding: 9px; }
+  .in-project .work-status-top { font-size: 10px; margin-bottom: 7px; }
+  .in-project .work-expert-identity h2 { font-size: 12px; }
+  .in-project .adviser-card > header { min-height: 58px; gap: 8px; padding: 11px 12px; }
+  .in-project .adviser-card h2 { font-size: 13px; }
+  .in-project .adviser-card > header .muted { font-size: 10px; }
+  .in-project .chat-expert-avatar { width: 28px; height: 28px; flex-basis: 28px; }
+  .in-project .workspace-tabs { gap: 12px; }
+  .in-project .workspace-tabs button { font-size: 11px; min-height: 32px; }
+  .in-project .chat-scroll-region { padding: 15px 11px 7px; }
+  .in-project .chat-message-row { width: 96%; gap: 8px; }
+  .in-project .chat-message-body { max-width: calc(100% - 36px); }
+  .in-project .adviser-card .chat-message { padding: 10px 12px; font-size: 13px; line-height: 1.85; }
+  .in-project .chat-message-name { font-size: 10px; }
+  .in-project .chat-work-action { flex-direction: column; align-items: flex-start; gap: 13px; padding: 14px 15px; }
+  .in-project .chat-work-action .button { align-self: flex-end; }
+  .in-project .chat-composer { padding: 8px 10px 10px; }
+  .in-project #adviser-chat-form { padding: 8px 9px; }
+  .in-project #adviser-message { font-size: 16px; }
+  .in-project .workspace-work-heading { min-height: 58px; padding: 11px 12px; }
+  .in-project .workspace-work-heading h2 { font-size: 14px; }
+  .in-project .workspace-content { padding: 18px 13px 25px; }
+  .in-project .workspace-content > .page-header { flex-direction: column; gap: 12px; }
+  .in-project .workspace-content > .page-header h1,
+  .in-project .workspace-document-heading h2 { font-size: 18px; }
+  .in-project .workspace-content .mat-editor-toolbar { flex-direction: column; }
+  .in-project .workspace-content .mat-editor,
+  .in-project .workspace-content .mat-save-section input { font-size: 16px; }
+  .in-project .workspace-content .policy-side .mock-score { flex-wrap: wrap; }
+  .in-project .workspace-content .policy-side > .text-button { display: flex; margin-left: 0; margin-top: 10px; }
+  .in-project .workspace-summary dl,
+  .in-project .workspace-source-list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-height: 640px) {
+  .in-project #main-content { padding-block: 12px; }
+  .in-project .project-workspace-header { min-height: 40px; margin-bottom: 8px; }
+  .in-project .project-heading h1 { font-size: 18px; }
+  .in-project .project-heading > div > p { font-size: 10px; margin-top: 1px; }
+  .in-project .workspace-status-grid { grid-auto-rows: 80px; padding-block: 8px; }
+  .in-project .work-status-card { height: 80px; padding-block: 8px; }
+  .in-project .work-status-top { margin-bottom: 6px; }
+  .in-project .adviser-card > header,
+  .in-project .workspace-work-heading { min-height: 51px; padding-block: 8px; }
+  .in-project .chat-scroll-region { padding-block: 12px 4px; }
+  .in-project .chat-composer { padding-block: 8px 10px; }
+  .in-project #adviser-message { height: 48px; min-height: 48px; max-height: 48px; line-height: 20px; }
+}
+@media (max-height: 560px) {
+  .in-project .chat-composer .chat-suggestions { display: none; }
+  .in-project .workspace-context { padding-top: 5px; }
+}
+/* 极矮窗口保留可滚动的最小工作区，输入框不被外层裁掉。 */
+@media (max-height: 480px) {
+  .in-project { overflow-y: auto; }
+  .in-project .main-shell { height: 480px; min-height: 100dvh; overflow: visible; }
+}
+@media (max-width: 900px) and (max-height: 640px) {
+  .in-project .workspace-context { height: 104px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .in-project .work-status-card { transition: none; }
+  .in-project .workspace-status-grid { scroll-behavior: auto; }
+}
+
+@media (max-width:1100px) and (min-width:901px) {
+ .in-project .workspace-document-toolbar { padding-inline:14px; }
+ .in-project .workspace-document>.workspace-content { padding:18px 16px; }
+}
+@media (max-width:900px) {
+ .in-project .is-document-open>.workspace-context { height:100%; max-height:none; }
+ .in-project .workspace-document-toolbar { min-height:56px; padding:10px 15px; }
+ .in-project .context-card { padding:16px; }
+}
+@media (max-width:620px) {
+ .in-project .workspace-document-toolbar>h2 { display:none; }
+ .in-project .workspace-document>.workspace-content { padding:18px 14px; }
+}
+
+/* 工作台：项目在前，专家作为补充入口。 */
+.dashboard-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin: 4px 0 24px; }
+.dashboard-tabs { display: flex; align-items: center; gap: 26px; }
+.dashboard-tab { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 41px; padding: 4px 0 10px; color: #6b7481; font-size: 14px; white-space: nowrap; }
+.dashboard-tab > span { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding-inline: 5px; border-radius: 5px; background: #f0f2f6; font-size: 10px; font-variant-numeric: tabular-nums; color: #6d7786; }
+.dashboard-tab.is-active { color: var(--ink); font-weight: 600; }
+.dashboard-tab.is-active::after { content: ""; height: 2px; position: absolute; inset-inline: 0; bottom: 0; border-radius: 2px; background: var(--blue); }
+.dashboard-tab.is-active > span { background: #e9f0ff; color: #2659a8; }
+.dashboard-projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.dashboard-project-card { display: flex; min-width: 0; flex-direction: column; padding: 23px; border-radius: 14px; background: #f5f7fa; transition: background .16s; }
+.dashboard-project-card:hover { background: #f0f3f8; }
+.dashboard-project-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 19px; }
+.dashboard-project-step { font-size: 10px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dashboard-project-card h2 { font-size: 17px; margin-bottom: 7px; }
+.dashboard-project-title { display: block; width: 100%; padding: 0; text-align: left; line-height: 1.6; font-size: 17px; font-weight: 600; overflow-wrap: anywhere; }
+.dashboard-project-title:hover { color: var(--blue); }
+.dashboard-project-company { font-size: 11px; line-height: 1.8; margin-bottom: 23px; overflow-wrap: anywhere; }
+.dashboard-current-work { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 10px; }
+.dashboard-work-indicator { width: 6px; height: 6px; margin-top: 7px; background: #6488be; border-radius: 50%; flex: 0 0 6px; }
+.dashboard-current-work > div { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; }
+.dashboard-current-work strong { font-size: 12px; font-weight: 600; }
+.dashboard-current-work div > span { color: var(--muted); font-size: 11px; }
+.dashboard-project-next { color: #5c697c; font-size: 12px; line-height: 1.9; margin: 0 0 23px; min-height: 3.8em; overflow-wrap: anywhere; }
+.dashboard-project-footer { display: flex; align-items: center; justify-content: space-between; gap: 17px; margin-top: auto; padding-top: 17px; border-top: 1px solid #e2e7ef; }
+.dashboard-project-footer .step-progress { flex: 1; display: grid; gap: 7px; font-size: 10px; max-width: 150px; }
+.dashboard-project-footer .step-progress > span { display: none; }
+.dashboard-project-footer .step-progress progress { height: 4px; }
+.dashboard-project-footer > .text-button { font-size: 12px; flex-shrink: 0; }
+.dashboard-help { margin-top: 48px; }
+.dashboard-help .section-heading h2 { font-size: 18px; }
+.dashboard-help-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.dashboard-expert-card { min-width: 0; display: flex; align-items: center; gap: 13px; padding: 18px; text-align: left; border-radius: 12px; background: #f7f8fa; transition: background .16s; }
+.dashboard-expert-card:hover { background: #edf2fa; }
+.dashboard-expert-avatar { flex: 0 0 45px; display: block; width: 45px; height: 45px; background-image: url('assets/landing/policy-advisers.webp'); background-color: #e7edf5; background-size: 300% 200%; background-position: var(--expert-x) var(--expert-y); background-repeat: no-repeat; border-radius: 50%; }
+.dashboard-expert-copy { display: grid; min-width: 0; gap: 4px; }
+.dashboard-expert-copy strong { font-size: 13px; font-weight: 500; }
+.dashboard-expert-copy small { font-size: 11px; color: var(--muted); line-height: 1.7; }
+.dashboard-expert-card > .icon { margin-left: auto; width: 16px; height: 16px; color: #8190a4; }
+
+@media (max-width: 1370px) {
+  .dashboard-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dashboard-help-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .dashboard-toolbar { align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+  .dashboard-tabs { gap: 21px; }
+  .dashboard-tab { font-size: 13px; gap: 6px; }
+  .dashboard-toolbar > .button { min-height: 38px; margin-left: auto; }
+  .dashboard-projects { grid-template-columns: minmax(0, 1fr); gap: 15px; }
+  .dashboard-project-card { padding: 22px; }
+  .dashboard-project-step { font-size: 11px; }
+  .dashboard-project-company { margin-bottom: 20px; }
+  .dashboard-project-next { min-height: 0; }
+  .dashboard-project-footer .step-progress { max-width: 190px; }
+  .dashboard-help { margin-top: 35px; }
+  .dashboard-help-grid { gap: 11px; }
+  .dashboard-expert-card { flex-wrap: wrap; gap: 11px; padding: 17px 14px; align-items: flex-start; }
+  .dashboard-expert-copy { flex-basis: 100%; order: 2; gap: 4px; }
+  .dashboard-expert-copy strong { font-size: 12px; }
+  .dashboard-expert-copy small { font-size: 11px; }
+  .dashboard-expert-card > .icon { margin-top: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-project-card,
+  .dashboard-expert-card { transition: none; }
+}
+
+@media(hover:none){.in-project .chat-confirmation-actions .button,.in-project .chat-confirmation-actions .text-button{min-height:44px}.in-project .workspace-company-materials>summary{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.in-project .workspace-company-materials>summary .icon{transition:none}}
+
+/* 简介保留必要企业信息，输出采用文件行，历史版本更容易被发现。 */
+.in-project .workspace-summary .context-company-description{margin-bottom:10px}
+.in-project .workspace-summary .project-progress{padding-top:12px;margin-top:12px;row-gap:6px}
+.in-project .workspace-summary .workspace-company-materials{margin-top:12px}
+
+/* 首页对话：还没有项目，不显示右栏 */
+
+/* 顶部标签页：选中的和对话区连成一体，不可关闭 */
+.in-project .workspace-expert-strip { align-items: flex-end; background: #f3f5f8; box-shadow: inset 0 -1px #e4e9f0; border-bottom: 0; }
+.in-project .workspace-status-grid,
+.in-project .workspace-status-grid.is-capability-grid { display: flex; align-items: flex-end; gap: 2px; padding: 8px 8px 0; }
+.in-project .work-status-card { position: relative; display: flex; flex: 1 0 auto; flex-direction: row; align-items: center; justify-content: flex-start; gap: 8px; height: 46px; margin-bottom: 1px; padding: 0 12px 0 8px; border-radius: 8px 8px 0 0; background: transparent; box-shadow: none; }
+.in-project .work-status-card:hover { background: #e9edf3; }
+.in-project .work-status-card.is-selected,
+.in-project .work-status-card[aria-selected="true"] { flex: 1 0 auto; height: 47px; margin-bottom: 0; background: #fff; box-shadow: none; }
+.in-project .work-status-card:focus-visible { outline-offset: -2px; }
+.in-project .work-tab-text { display: flex; flex-direction: column; align-items: flex-start; flex: 1 1 auto; min-width: 0; }
+.in-project .work-tab-text small { font-size: 11px; line-height: 1.4; font-weight: 400; color: #6d7887; white-space: nowrap; }
+.in-project .work-status-card h2 { margin: 0; font-size: 13px; line-height: 1.4; font-weight: 500; color: #33465f; white-space: nowrap; }
+.in-project .work-status-card.is-selected h2,
+.in-project .work-status-card[aria-selected="true"] h2 { color: #174faf; font-weight: 600; }
+/* 选中员工时，标题信息已在标签里 */
+.in-project .workspace-conversation:has(.work-status-card[aria-selected="true"]) .adviser-card > header { display: none; }
+.in-project .work-card-icon { display: grid; place-items: center; flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: #e6eefc; color: #1f5fd6; transition: background .15s, color .15s; }
+.in-project .work-card-icon .icon { width: 16px; height: 16px; }
+.in-project .work-status-card[aria-selected="true"] .work-card-icon { background: #1f5fd6; color: #fff; }
+.in-project .work-status-tag { flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%; background: #285caa; }
+.in-project .work-status-card[data-status="waiting"] .work-status-tag,
+.in-project .work-status-card[data-status="review"] .work-status-tag { background: #b9751f; }
+.in-project .work-status-tag.is-done { display: inline-flex; width: 14px; height: 14px; background: none; color: #28664b; }
+.in-project .work-status-tag.is-done .icon { width: 14px; height: 14px; }
+.in-project .chat-expert-subject { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* 右栏：企业画像 + 输出物 */
+.in-project .workspace-summary .workspace-portrait { display: grid; gap: 6px; margin: 0; }
+.in-project .workspace-summary .workspace-portrait > div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 8px; margin: 0; padding: 0; border: 0; font-size: 12px; line-height: 1.55; }
+.in-project .workspace-portrait dt { margin: 0; color: #6d7887; font-weight: 400; }
+.in-project .workspace-portrait dd { margin: 0; color: #1d2733; overflow-wrap: anywhere; }
+.in-project .workspace-portrait dd.is-empty { color: #9aa4b2; }
+.in-project .workspace-portrait-edit { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-size: 12px; }
+.in-project .workspace-portrait-edit .icon { width: 13px; height: 13px; }
+.in-project .workspace-result .workspace-version-list { margin-top: 12px; padding: 12px 0 0; border-top: 1px solid #edf0f4; background: none; box-shadow: none; }
+.in-project .workspace-version-list h3 { margin: 0; font-size: 12px; font-weight: 600; }
+.in-project .workspace-portrait.is-editing { display: grid; gap: 6px; }
+.in-project .workspace-portrait.is-editing > div { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 8px; font-size: 12px; line-height: 1.4; }
+.in-project .workspace-portrait.is-editing label { color: #6d7887; }
+.in-project .workspace-portrait.is-editing input,
+.in-project .workspace-portrait.is-editing select { width: 100%; min-width: 0; height: 28px; padding: 0 6px; border: 1px solid #dce3ed; border-radius: 6px; background: #fff; font-size: 12px; color: #1d2733; }
+.in-project .workspace-portrait.is-editing input:focus,
+.in-project .workspace-portrait.is-editing select:focus { border-color: #88a9df; outline: 0; box-shadow: 0 0 0 2px #edf3fe; }
+.in-project .workspace-portrait-actions { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 10px; }
+.in-project .workspace-portrait-actions .text-button { font-size: 12px; }
+.in-project .workspace-portrait-actions .button { min-height: 28px; padding: 0 12px; font-size: 12px; box-shadow: none; }
+
+/* 弱化员工名字：对话里只留头像 */
+.in-project .is-assistant .chat-message-name { display: none; }
+/* 首页轮播；选了问题后不再显示对话头 */
+.in-project .home-wins { flex: 0 0 auto; display: flex; align-items: center; min-height: 40px; padding: 0 16px; background: #f3f7ff; border-bottom: 1px solid #e4ebf7; }
+.in-project .home-win { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-width: 0; font-size: 12px; line-height: 1.5; color: #33465f; text-decoration: none; animation: home-win-in .35s ease-out; }
+.in-project .home-win:hover .home-win-copy { color: #174faf; }
+.in-project .home-win-copy { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.in-project .home-win strong { font-weight: 600; color: #1d2733; }
+.in-project .home-win em { font-style: normal; font-weight: 700; color: #d9480f; }
+.in-project .home-win small { flex: none; font-size: 11px; color: #7a8797; }
+@keyframes home-win-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .in-project .home-win { animation: none; } }
+.in-project .project-workspace.is-start:not([data-work=""]) .adviser-card > header { display: none; }

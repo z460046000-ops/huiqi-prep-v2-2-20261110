@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f6f8">
+  <title>惠企政策平台</title>
+  <meta name="description" content="从企业情况出发，查找适用政策、看懂申报条件、准备申报材料。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230c5ce8'/%3E%3Cpath d='M11 12h18v16H11zM16 8v24m8-24v24M8 20h24' stroke='white' fill='none' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=glass-d11-check">
+  <link rel="stylesheet" href="materials.css?v=glass-d11-check">
+  <link rel="stylesheet" href="project-workspace.css?v=glass-d11-check">
+  <link rel="stylesheet" href="prep-cards.css?v=glass-d11-check">
+  <link rel="stylesheet" href="version-drawer.css?v=glass-d11-check">
+  <link rel="stylesheet" href="batch.css?v=glass-d11-check">
+  <link rel="stylesheet" href="home-feed.css?v=glass-d11-check">
+  <link rel="stylesheet" href="home.css?v=glass-d11-check">
+  <link rel="stylesheet" href="match.css?v=v22-onebtn">
+  <link rel="stylesheet" href="drawer.css?v=glass-d11-check">
+  <link rel="stylesheet" href="start-home.css?v=glass-d11-check">
+  <link rel="stylesheet" href="aurora-glass.css?v=glass-d11-check">
+  <script defer src="expert-personas.js?v=subsidy-1110"></script>
+  <script defer src="public-policy-data.js?v=subsidy-1110"></script>
+  <script defer src="landing-data.js?v=glass-d11-check"></script>
+  <script defer src="home-feed.js?v=glass-d11-check"></script>
+  <script defer src="demo-data.js?v=glass-d11-check"></script>
+  <script defer src="store.js?v=review-1110c"></script>
+  <script defer src="materials.js?v=glass-d11-check"></script>
+  <script defer src="views.js?v=glass-d11-check"></script>
+  <script defer src="match.js?v=v22-onebtn"></script>
+  <script defer src="chat.js?v=v22-1110"></script>
+  <script defer src="project-workspace.js?v=review-1110c"></script>
+  <script defer src="batch.js?v=glass-d11-check"></script>
+  <script defer src="app.js?v=nav-new-chat-1104"></script>
+</head>
+<body>
+  <a class="skip-link" href="#page-content">跳到主要内容</a>
+  <div class="app-shell">
+    <button class="sidebar-backdrop" aria-label="关闭菜单" data-action="close-menu" hidden></button>
+    <aside class="sidebar" id="sidebar" aria-label="主要导航">
+      <a class="brand" href="#dashboard" data-route="dashboard" aria-label="返回惠企政策平台首页">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="22" rx="3"/><path d="M11 3v28M21 3v28M2 16h28"/></svg>
+        <span>惠企政策平台</span>
+      </a>
+      <button class="create-button" data-route="new" hidden><span data-icon="plus"></span>创建新任务</button>
+      <nav class="primary-nav">
+        <a href="#dashboard?work=interpret" data-nav="interpret" data-action="nav-work" data-work="interpret"><span data-icon="grid"></span>政策匹配</a>
+        <a href="#dashboard?work=assembly" data-nav="assembly" data-action="nav-work" data-work="assembly"><span data-icon="step-compose"></span>政策申报辅助</a>
+        <a href="#dashboard?work=guidance" data-nav="guidance" data-action="nav-work" data-work="guidance"><span data-icon="step-submit"></span>办理指引</a>
+        <a href="#batch" data-nav="batch" hidden><span data-icon="search"></span>批量匹配</a>
+        <a href="#services" data-nav="services" hidden><span data-icon="layers"></span>政策服务</a>
+        <a href="#library" data-nav="library"><span data-icon="folder"></span>申报材料库</a>
+      </nav>
+      <div class="sidebar-projects"><div class="sidebar-section-heading">最近对话</div><div id="recent-projects"></div></div>
+      <div class="sidebar-bottom"><div class="demo-identity"><span class="identity-mark">企</span><div><strong>企业服务空间</strong></div><span class="demo-dot" aria-hidden="true"></span></div><p id="storage-status" class="storage-status" aria-live="polite"></p></div>
+    </aside>
+    <div class="app-account">
+      <button type="button" class="app-avatar" data-account-toggle aria-label="账号" aria-haspopup="true" aria-expanded="false"><img src="assets/default-avatar.png" alt=""></button>
+      <div class="account-menu" role="menu" hidden>
+        <div class="account-menu-head">
+          <img src="assets/default-avatar.png" alt="">
+          <div class="account-menu-id"><strong>万大圣用户</strong><span>138****0000</span></div>
+          <a class="account-menu-verify" href="https://www.wdsheng.com/" target="_blank" rel="noopener noreferrer" role="menuitem">去认证<span data-icon="chevron"></span></a>
+        </div>
+        <button type="button" class="account-menu-logout" data-account-logout role="menuitem">退出登录</button>
+      </div>
+    </div>
+    <div class="main-shell">
+      <header class="mobile-header"><button class="icon-button" aria-label="打开菜单" aria-expanded="false" aria-controls="sidebar" data-action="open-menu"><span data-icon="menu"></span></button><a href="landing.html">惠企政策平台</a></header>
+      <div class="user-filter" hidden><label for="user-type">用户筛选</label><select id="user-type"><option value="enterprise">企业用户</option><option value="researcher">政策研究员</option></select></div>
+      <main id="main-content"><div id="page-content" tabindex="-1"></div></main>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="noscript">请在浏览器中开启 JavaScript，以使用任务与材料版本功能。</p></noscript>
+  <script src="design-seed.js?v=glass-d11-check"></script>
+</body>
+</html>
